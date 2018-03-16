@@ -1,21 +1,22 @@
-// importe os módulos HTTP e FileSystem
-const http = require('http'), fs = require('fs')
+// Next the pass, carregar o Express e criar um APP
+
+const app = require('require')()
+const path = require('path')
+
+// vamos criar uma rota para '/',
+// quando digitar o ip da aplicacao ele redireciona para o index.html,
+// sem ter a necessidade de por assim : http://localhost:2018/index.html
+
+app.get('/', (req, res) => {
+    // send for client an index.html
+    res.sendFile(path.join(__dirname + '/index.html'))
+})
+
+//agora mudamos de porta para 2017
+// Para fins de estudo, utilize portas diferentes dos padroes ex.: 80, 8080, 443, 5060..
+// inicia o servico ae man!!
+app.listen(2018)
+console.log('Service is running in the port 2018 :) ')
 
 
-// agora crie o Server HTTP
-http.createServer((req, res) => {
-    // Esse é header da resposta do server, quando estiver all right
-    res.writeHead(200, {
-        'Content-Type': 'text/html',
-        'Access-Control-Allow-Origin': '*'
-    })
-    // Vamos read the archive index.html
-    let readStream = fs.createReadStream(__dirname + '/index.html')
 
-    // Let's send para o cliente
-    readStream.pipe(res)
-}).listen(1991)
-
-// Dizemos para escutar na porta 1991.
-// e informamos o endpoint 
-console.log('Entra nessa parada mermao, http://localhost:1991  ou http://127.0.0.1:1991  xD')
