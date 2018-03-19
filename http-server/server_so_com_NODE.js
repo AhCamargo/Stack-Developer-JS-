@@ -1,5 +1,5 @@
 // importe os módulos HTTP e FileSystem
-const http = require('http'), fs = require('fs')
+/*const http = require('http'), fs = require('fs')
 
 
 // agora crie o Server HTTP
@@ -25,4 +25,4 @@ console.log('Entra nessa parada mermao, http://localhost:1991  ou http://127.0.0
 /// utilizar o framework para o NODE, o famoso EXPRESS.
 // criar outro arquivo com o nome de server.js
 /* NAO SE ESQUECA DE DAR O COMANDO CTRL + C PARA ENCERRAR O SERVICO. VLW
-
+*/
