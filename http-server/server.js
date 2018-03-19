@@ -3,6 +3,10 @@ const express = require('express')
 const app = express()
 const path = require('path')
 
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/db_meanjs')
+
 // vamos criar uma rota para '/',
 // quando digitar o ip da aplicacao ele redireciona para o index.html,
 // sem ter a necessidade de por assim : http://localhost:2018/index.html
