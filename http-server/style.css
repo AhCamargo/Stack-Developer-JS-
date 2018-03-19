@@ -1,5 +1,6 @@
+*{ margin: 0; padding: 0; box-sizing: border-box;}
 body {
-    text-align: center;
+    
     background: #EFEFEF;
-    padding-top: 50px;
+    padding-top: 100px;
 }

@@ -15,8 +15,13 @@ app.get('/', (req, res) => {
 // chamando o Router
 var adminRouter = express.Router()
 
-//criando rotas p/ o admin
+//middleware de roteamento executado a cada requisiçao
+adminRouter.use((req, res, next) => {
+    console.log(req.method, res.url)
+    next()
+})
 
+//criando rotas p/ o admin
 adminRouter.get('/', (req, res) => {
     res.send('Hello, The World is mine!!')
 })
@@ -31,7 +36,28 @@ adminRouter.get('/posts', (req, res) => {
     res.send('Aqui está o seu post!')
 })
 
-app.use('/admin', adminRouter)
+adminRouter.get('/users/:name', (req, res) => {
+    res.send('Fala' + req.name + '!')
+})
+
+adminRouter.param('name', (req, res, next, name) => {
+    console.log('validando o nome: ' + name)
+    req.name = name
+    next()
+})
+
+app.route('/login')
+   .get((req, res) => {
+       res.send('This us the login form')
+   })
+   .post((req, res) => {
+       console.log('processing')
+       res.send('processing the login form')
+   })
+
+//app.use('/', basicRoutes)
+//app.use('/admin', adminRoutes)
+//app.use('/api', apiRoutes)
 
 //agora mudamos de porta para 2017
 // Para fins de estudo, utilize portas diferentes dos padroes ex.: 80, 8080, 443, 5060..
